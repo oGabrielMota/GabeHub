@@ -2,13 +2,24 @@ import api from '../api'
 
 export async function pegaRepositorios(login){
     try{
-        const resultado =  await api.get(`/${login}/repos`)
+        const resultado =  await api.get(`/users/${login}/repos`)
         console.log(resultado)
         return resultado.data
     }
     catch(erro) {
         console.log(erro)
         return []
+    }
+}
+
+export async function buscaRepositorio(full_name){
+    try{
+        const resultado =  await api.get(`/repos/${full_name}`)
+        return resultado.data
+    }
+    catch(erro) {
+        console.log(erro)
+        return {}
     }
 }
 

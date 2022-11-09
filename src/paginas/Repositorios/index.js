@@ -27,7 +27,7 @@ export default function Repositorios({ route, navigation }) {
         const resultado = await pegaRepositorios(route.params.login)
         console.log(resultado)
         setRepo(resultado)
-    },[estaNaTela])
+    },[])
     
 
     return (

@@ -1,74 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
-import { atualizaRepositorios, deletarRepositorios } from '../../services/requisicoes/repositorios'
+import { buscaRepositorio } from '../../services/requisicoes/repositorios'
+import { Linking } from 'react-native';
 import estilos from './estilos';
 
 export default function InfoRepositorio({ route, navigation }) {
-    const [nome, setNome] = useState(route.params.item.name);
-    const [data, setData] = useState(route.params.item.data);
+    const [nome] = useState(route.params.item.name);
+    const [repo, setRepo] = useState({})
 
+    useEffect( async ()=> {
+        const resultado = await buscaRepositorio(route.params.item.full_name)
+        setRepo(resultado)
+    },[])
 
-    async function atualiza(){
-        const resultado = await atualizaRepositorios(
-            route.params.item.postId,
-            nome,
-            data,
-            route.params.item.id
-        )
-
-        if (resultado === 'sucesso'){
-            Alert.alert("Repositorio alterado com sucesso")
-            navigation.goBack()
-        }
-        else{
-            Alert.alert("Erro ao alterar o Repositorio")
-            console.log(resultado)
-        }
-    }
-
-    async function deletar(){
-        const resultado = await deletarRepositorios(route.params.item.id)
-
-        if (resultado === 'sucesso'){
-            Alert.alert("Repositorio deletado com sucesso")
-            navigation.goBack()
-        }
-        else{
-            Alert.alert("Erro ao deletar o Repositorio")
-            console.log(resultado)
-        } 
-    }
 
     return (
         <View style={estilos.container}>
-            <TextInput
-                placeholder="Nome do repositório"
-                autoCapitalize="none"
-                style={estilos.entrada}
-                value={nome}
-                onChangeText={setNome}
-            />
+            <Text>{repo.nome}</Text>
+            <Text>{repo.node_id}</Text>
+            <Text>{repo.full_name}</Text>
+            <Text>{repo.language}</Text>
             <TextInput
                 placeholder="Data de criação"
                 autoCapitalize="none"
                 style={estilos.entrada}
-                value={data}
-                onChangeText={setData}
+                value={nome}
             />
             <TouchableOpacity 
                 style={estilos.botao}
-                onPress={atualiza}
+                onPress={() => {Linking.openURL(repo.html_url)}}
             >
                 <Text style={estilos.textoBotao}>
-                    Salvar
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-                style={[estilos.botao, {backgroundColor: '#DD2B2B', marginTop: 10}]} 
-                onPress={deletar}
-            >
-                <Text style={estilos.textoBotao}>
-                    Deletar
+                    Abrir repositorio
                 </Text>
             </TouchableOpacity>
         </View>
