@@ -34,9 +34,10 @@ const estilos = StyleSheet.create({
         color: '#444',
         fontWeight: 'bold',
     },
-    repositorioData: {
+    repositorioDescricao: {
         fontSize: 14,
         color: '#999',
+        marginTop: 5,
     },
     botao: {
         backgroundColor: '#8A07DA',
@@ -51,6 +52,12 @@ const estilos = StyleSheet.create({
     textoBotao: {
         fontSize: 16,
         color: '#FFF',
+    },
+    semInfo: {
+        fontSize: 14,
+        color: '#999',
+        marginTop: 5,
+        opacity: 0.3
     },
 });
 

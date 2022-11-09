@@ -1,8 +1,9 @@
 import api from '../api'
 
-export async function pegaRepositorios(id){
+export async function pegaRepositorios(login){
     try{
-        const resultado =  await api.get(`/repos?postId=${id}`)
+        const resultado =  await api.get(`/${login}/repos`)
+        console.log(resultado)
         return resultado.data
     }
     catch(erro) {
