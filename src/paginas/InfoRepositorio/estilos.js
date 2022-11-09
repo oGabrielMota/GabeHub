@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 
 const estilos = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#fafafa',
         alignItems: 'center',
         justifyContent: 'center',
@@ -32,6 +31,44 @@ const estilos = StyleSheet.create({
         borderRadius: 8,
         height: 44,
         width: '90%',
+    },
+    nomeDescricao: {
+        paddingBottom: 25,
+        paddingTop: 55,
+    },
+    descrição: {
+        fontSize: 15,
+        alignItems: 'center',
+        fontWeight: '600',
+        color: '#45565F',
+        ustifyContent: 'center',
+        textAlign: 'center',
+    },
+    nome: {
+        fontSize: 35,
+        fontWeight: '600',
+        color: '#45565F',
+        justifyContent: 'center',
+        textAlign: 'center',
+    },
+    datas: {
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        paddingTop: 10,
+        paddingBottom: 25
+    },
+    numeros: {
+        marginRight: 10,
+        marginLeft: 10,
+        color: '#8A07DA',
+        fontSize: 15,
+    },
+    textoNumeros: {
+        color: '#95A8B2',
+        fontSize: 13,
+        marginTop: 5,
     }
 });
 
