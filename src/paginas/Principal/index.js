@@ -58,10 +58,12 @@ export default function Principal({ navigation }) {
                         
                     </View>
                     <View style={estilos.areaInfos}>
-                        <View style={estilos.seguidores}>
-                            <Text style={estilos.seguidoresNumero}>{usuario.followers}</Text>
-                            <Text style={estilos.seguidoresTexto}>Seguidores</Text>
-                        </View>
+                        <TouchableOpacity  onPress={() => navigation.navigate(usuario.followers <= 0 ? 'Erro404' : 'Seguidores' , {login: usuario.login})}> 
+                            <View style={estilos.seguidores}>
+                                    <Text style={estilos.seguidoresNumero}>{usuario.followers}</Text>
+                                    <Text style={estilos.seguidoresTexto}>Seguidores</Text>
+                            </View>
+                        </TouchableOpacity>
                         <View style={estilos.seguidores}>
                             <Text style={estilos.seguidoresNumero}>{usuario.following}</Text>
                             <Text style={estilos.seguidoresTexto}>Seguindo</Text>
