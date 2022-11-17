@@ -24,7 +24,7 @@ export default function Seguidores({ route, navigation}){
             numColumns={3}
             keyExtractor={seguidores => seguidores.id}
             renderItem={({item}) => (
-                <TouchableOpacity onPress={() => navigation.navigate('Principal', item.login)}>
+                <TouchableOpacity onPress={() => navigation.navigate('SeguidoresPagina', {login: item.login})}>
                     <View style={estilos.imagemArea}>
                         <Image source={{ uri: item.avatar_url }} style={estilos.imagem} />
                         <Text style={{marginTop: 5}}>{item.login}</Text>
